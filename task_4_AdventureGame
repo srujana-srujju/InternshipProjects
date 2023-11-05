@@ -1,0 +1,92 @@
+import random
+
+def display_intro():
+    print("Welcome to the Haunted House Adventure!")
+    print("You find yourself in front of a spooky old house.")
+    print("Your mission is to explore the house and find the hidden treasure.")
+    print("But beware, the house is haunted, and danger lurks inside.")
+    print("Choose your path wisely!\n")
+
+def get_user_choice():
+    while True:
+        try:
+            choice = int(input("Enter 1 to open the front door, 2 to check the windows, or 3 to run away: "))
+            if choice in [1, 2, 3]:
+                return choice
+            else:
+                print("Invalid choice. Please enter 1, 2, or 3.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+def explore_front_door():
+    print("You open the front door and enter the house.")
+    print("A ghostly figure appears in front of you.")
+    print("What will you do?")
+    print("1. Run away in fear.")
+    print("2. Try to communicate with the ghost.")
+    print("3. Fight the ghost.")
+    
+    choice = get_user_choice()
+    
+    if choice == 1:
+        print("You run away in fear and escape the haunted house.")
+    elif choice == 2:
+        print("You try to communicate with the ghost, but it doesn't respond. It slowly fades away.")
+        print("You can continue exploring.")
+        explore_house()
+    else:
+        print("You attempt to fight the ghost, but your attacks pass through it. The ghost vanishes, and you're left alone in the house.")
+        print("You can continue exploring.")
+        explore_house()
+
+def explore_windows():
+    print("You check the windows, but they are all boarded up.")
+    print("You realize there's no way out from here.")
+    print("What will you do?")
+    print("1. Go back to the front door.")
+    print("2. Search for clues in the room.")
+    
+    choice = get_user_choice()
+    
+    if choice == 1:
+        explore_front_door()
+    else:
+        print("You search for clues but find nothing of interest.")
+        print("You can go back to the front door.")
+        explore_front_door()
+
+def explore_house():
+    print("\nYou are inside the house. It's dark and eerie.")
+    print("There are two doors in front of you.")
+    print("1. Door on the left.")
+    print("2. Door on the right.")
+    print("3. Go back to the front door.")
+    
+    choice = get_user_choice()
+    
+    if choice == 1:
+        print("You open the door on the left and find a dusty old library.")
+        print("You search the library and discover a hidden room.")
+        print("Inside the hidden room, you find a chest filled with treasure!")
+        print("Congratulations! You've won the game.")
+    elif choice == 2:
+        print("You open the door on the right and enter a creepy kitchen.")
+        print("The kitchen is filled with strange noises, and you decide to leave.")
+        print("You can go back to the main room.")
+        explore_house()
+    else:
+        explore_front_door()
+
+def main():
+    display_intro()
+    choice = get_user_choice()
+    
+    if choice == 1:
+        explore_front_door()
+    elif choice == 2:
+        explore_windows()
+    else:
+        print("You run away in fear without even entering the house. Game over!")
+
+if __name__ == "__main":
+    main()
